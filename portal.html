@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTO LAVADO MONTANA | Portal Cliente</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="login-body">
+  <main class="login-page">
+    <section class="login-card portal-card">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 id="portalBusinessName">AUTO LAVADO MONTANA</h1>
+          <p class="muted">Portal cliente</p>
+        </div>
+      </div>
+
+      <form id="portalForm" class="stack">
+        <input id="portalPhone" placeholder="Ingresa tu número de celular" required>
+        <button class="btn-primary" type="submit">Consultar</button>
+      </form>
+
+      <p id="portalMessage" class="muted" style="margin-top:12px"></p>
+
+      <section id="portalResult" class="hidden">
+        <div class="card" style="margin-top:18px">
+          <h2 id="pcName">Cliente</h2>
+          <p id="pcPhone" class="muted" style="margin-top:8px"></p>
+          <div class="portal-stats">
+            <div class="mini"><span>Puntos</span><strong id="pcPoints">0</strong></div>
+            <div class="mini"><span>Visitas</span><strong id="pcVisits">0</strong></div>
+            <div class="mini"><span>Suscripción</span><strong id="pcSub">Sin plan</strong></div>
+          </div>
+        </div>
+
+        <div class="portal-grid">
+          <div class="card"><h3>Vehículos</h3><div id="pcVehicles"></div></div>
+          <div class="card"><h3>Recompensas disponibles</h3><div id="pcRewards"></div></div>
+          <div class="card"><h3>Historial de servicios</h3><div id="pcHistory"></div></div>
+        </div>
+      </section>
+
+      <p style="margin-top:16px"><a href="index.html">Volver al login</a></p>
+    </section>
+  </main>
+
+  <script type="module" src="js/portal.js"></script>
+</body>
+</html>

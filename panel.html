@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTO LAVADO MONTANA | Panel</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h2 id="sidebarBusinessName">AUTO LAVADO MONTANA</h2>
+          <p class="muted">Control Pro</p>
+        </div>
+      </div>
+
+      <div class="menu">
+        <button class="active" data-page="dashboard">Dashboard</button>
+        <button data-page="clientes">Clientes</button>
+        <button data-page="servicios">Servicios</button>
+        <button data-page="suscripciones">Suscripciones</button>
+        <button data-page="pagos">Pagos</button>
+        <button data-page="recompensas">Recompensas</button>
+        <button data-page="objetivos">Objetivos</button>
+        <button data-page="canjes">Canjes</button>
+        <button data-page="usuarios">Usuarios</button>
+        <button data-page="reportes">Reportes</button>
+        <button data-page="configuracion">Configuración</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="top">
+        <div>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="userInfo" class="muted">Cargando usuario...</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div id="alertsBadge" class="badge yellow">0 alertas</div>
+          <button id="logoutBtn" class="btn-danger">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <div class="pages">
+        <section class="page active" id="dashboard">
+          <div class="kpis">
+            <div class="kpi"><span>Clientes</span><strong id="kpiClientes">0</strong></div>
+            <div class="kpi"><span>Servicios</span><strong id="kpiServicios">0</strong></div>
+            <div class="kpi"><span>Ingresos</span><strong id="kpiIngresos">Q0</strong></div>
+            <div class="kpi"><span>Puntos</span><strong id="kpiPuntos">0</strong></div>
+            <div class="kpi"><span>Suscripciones activas</span><strong id="kpiSubs">0</strong></div>
+            <div class="kpi"><span>Canjes</span><strong id="kpiCanjes">0</strong></div>
+          </div>
+
+          <div class="grid2">
+            <div class="card"><h3>Actividad reciente</h3><div id="activityList"></div></div>
+            <div class="card"><h3>Alertas</h3><div id="alertsList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="clientes">
+          <div class="grid2">
+            <div class="card">
+              <h3>Nuevo cliente</h3>
+              <form id="clienteForm" class="stack">
+                <input id="clienteNombre" placeholder="Nombre del cliente" required>
+                <input id="clienteTelefono" placeholder="Teléfono">
+                <button class="btn-primary" type="submit">Guardar cliente</button>
+              </form>
+            </div>
+            <div class="card">
+              <h3>Clientes</h3>
+              <input id="clienteSearch" placeholder="Buscar por nombre, teléfono, placa o marca">
+              <div id="clientesList" style="margin-top:12px"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="servicios">
+          <div class="grid2">
+            <div class="card">
+              <h3>Catálogo de servicios</h3>
+              <div id="serviceAdminBox">
+                <form id="serviceForm" class="stack">
+                  <input id="serviceNombre" placeholder="Nombre del servicio" required>
+                  <input id="servicePrecio" type="number" placeholder="Precio" required>
+                  <input id="servicePuntos" type="number" placeholder="Puntos" required>
+                  <button class="btn-primary" type="submit">Guardar servicio</button>
+                </form>
+              </div>
+              <div id="serviceAdminNotice" class="hidden notice">Como empleado puedes ver el catálogo, pero no crear nuevos servicios.</div>
+              <div id="servicesCatalogList" style="margin-top:12px"></div>
+            </div>
+
+            <div class="card">
+              <h3>Registrar servicio</h3>
+              <form id="registerServiceForm" class="stack">
+                <select id="serviceClientSelect" required></select>
+                <select id="serviceVehicleSelect" required></select>
+                <select id="serviceTypeSelect" required></select>
+                <input id="servicePriceInput" type="number" placeholder="Precio" required>
+                <input id="servicePointsInput" type="number" placeholder="Puntos" required>
+                <button class="btn-primary" type="submit">Registrar servicio</button>
+              </form>
+              <div id="servicesHistoryList" style="margin-top:14px"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="suscripciones">
+          <div class="grid2">
+            <div class="card">
+              <h3>Suscripciones mensuales</h3>
+              <div id="subscriptionAdminBox">
+                <form id="subscriptionForm" class="stack">
+                  <input id="subscriptionName" placeholder="Nombre del plan" required>
+                  <input id="subscriptionPrice" type="number" placeholder="Precio mensual" required>
+                  <textarea id="subscriptionBenefits" placeholder="Beneficios, uno por línea"></textarea>
+                  <button class="btn-primary" type="submit">Guardar suscripción</button>
+                </form>
+              </div>
+              <div id="subscriptionAdminNotice" class="hidden notice">Como empleado puedes ver planes, pero no crear suscripciones nuevas.</div>
+              <div id="subscriptionsList" style="margin-top:12px"></div>
+            </div>
+
+            <div class="card">
+              <h3>Asignar o renovar</h3>
+              <form id="assignSubscriptionForm" class="stack">
+                <select id="subscriptionClientSelect" required></select>
+                <select id="subscriptionPlanSelect" required></select>
+                <button class="btn-primary" type="submit">Asignar o renovar</button>
+              </form>
+              <div id="subscriptionAssignmentsList" style="margin-top:14px"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="pagos">
+          <div class="grid2">
+            <div class="card">
+              <h3>Registrar pago</h3>
+              <form id="paymentForm" class="stack">
+                <select id="paymentClientSelect" required></select>
+                <input id="paymentConcept" placeholder="Concepto" required>
+                <input id="paymentAmount" type="number" placeholder="Monto" required>
+                <select id="paymentMethod" required>
+                  <option>Efectivo</option>
+                  <option>Tarjeta</option>
+                  <option>Transferencia</option>
+                </select>
+                <button class="btn-primary" type="submit">Guardar pago</button>
+              </form>
+            </div>
+            <div class="card"><h3>Historial de pagos</h3><div id="paymentsList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="recompensas">
+          <div class="grid2">
+            <div class="card">
+              <h3>Recompensas</h3>
+              <div id="rewardAdminBox">
+                <form id="rewardForm" class="stack">
+                  <input id="rewardName" placeholder="Nombre de la recompensa" required>
+                  <input id="rewardPoints" type="number" placeholder="Puntos requeridos" required>
+                  <textarea id="rewardDescription" placeholder="Descripción"></textarea>
+                  <button class="btn-primary" type="submit">Guardar recompensa</button>
+                </form>
+              </div>
+              <div id="rewardAdminNotice" class="hidden notice">Como empleado puedes ver recompensas, pero no crear nuevas.</div>
+              <div id="rewardsList" style="margin-top:12px"></div>
+            </div>
+            <div class="card"><h3>Clientes con puntos</h3><div id="clientsRewardsList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="objetivos">
+          <div class="grid2">
+            <div class="card">
+              <h3>Objetivos</h3>
+              <div id="goalAdminBox">
+                <form id="goalForm" class="stack">
+                  <input id="goalName" placeholder="Nombre del objetivo" required>
+                  <input id="goalTarget" type="number" placeholder="Meta de visitas" required>
+                  <input id="goalReward" placeholder="Recompensa" required>
+                  <button class="btn-primary" type="submit">Guardar objetivo</button>
+                </form>
+              </div>
+              <div id="goalAdminNotice" class="hidden notice">Como empleado puedes ver objetivos, pero no crear nuevos.</div>
+              <div id="goalsList" style="margin-top:12px"></div>
+            </div>
+            <div class="card"><h3>Seguimiento</h3><div id="goalProgressList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="canjes">
+          <div class="grid2">
+            <div class="card">
+              <h3>Registrar canje</h3>
+              <form id="redeemForm" class="stack">
+                <select id="redeemClientSelect" required></select>
+                <select id="redeemRewardSelect" required></select>
+                <button class="btn-primary" type="submit">Canjear recompensa</button>
+              </form>
+            </div>
+            <div class="card"><h3>Historial de canjes</h3><div id="redeemsList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="usuarios">
+          <div class="grid2">
+            <div class="card">
+              <h3>Perfiles internos de usuario</h3>
+              <form id="userProfileForm" class="stack">
+                <input id="userProfileName" placeholder="Nombre" required>
+                <input id="userProfileEmail" type="email" placeholder="Correo" required>
+                <select id="userProfileRole">
+                  <option value="admin">Admin</option>
+                  <option value="empleado">Empleado</option>
+                </select>
+                <select id="userProfileActive">
+                  <option value="true">Activo</option>
+                  <option value="false">Inactivo</option>
+                </select>
+                <button class="btn-primary" type="submit">Guardar perfil</button>
+              </form>
+              <div class="notice">Aquí administras el perfil interno. El acceso real se crea en Firebase Authentication.</div>
+            </div>
+            <div class="card"><h3>Perfiles</h3><div id="usersList"></div></div>
+          </div>
+        </section>
+
+        <section class="page" id="reportes">
+          <div class="grid2">
+            <div class="card"><h3>Resumen</h3><div id="reportsSummary"></div></div>
+            <div class="card">
+              <h3>Exportar</h3>
+              <div class="stack">
+                <button id="exportJsonBtn" class="btn-primary" type="button">Exportar backup JSON</button>
+                <button id="exportCsvBtn" class="btn-secondary" type="button">Exportar pagos CSV</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="configuracion">
+          <div class="grid2">
+            <div class="card">
+              <h3>Configuración editable</h3>
+              <form id="configForm" class="stack">
+                <input id="configBusinessName" value="AUTO LAVADO MONTANA" placeholder="Nombre negocio">
+                <input id="configDomain" value="autolavadomontana.store" placeholder="Dominio">
+                <input id="configWhatsapp" value="" placeholder="WhatsApp negocio">
+                <input id="configCurrency" value="GTQ" placeholder="Moneda">
+                <input id="configBasePoints" type="number" value="0" placeholder="Puntos base">
+                <button class="btn-primary" type="submit">Guardar configuración</button>
+              </form>
+            </div>
+            <div class="card"><h3>Vista guardada</h3><div id="configPreview"></div></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
